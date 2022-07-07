@@ -42,8 +42,8 @@ package gl
 import "C"
 import "unsafe"
 
-func getProcAddress(namea string) unsafe.Pointer {
+func getProcAddress(namea string) uintptr {
 	cname := C.CString(namea)
 	defer C.free(unsafe.Pointer(cname))
-	return C.GlowGetProcAddress_gl21(cname)
+	return uintptr(C.GlowGetProcAddress_gl21(cname))
 }
